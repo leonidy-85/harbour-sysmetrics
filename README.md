@@ -1,5 +1,7 @@
 # SysMetrics
 
+[English](README.md) · [Русский](README.ru.md)
+
 System diagnostics for Aurora OS. htop-class process monitor plus system,
 network, device and battery inspection — and read-only diagnostics that
 recognise documented device issues and explain their fixes.
