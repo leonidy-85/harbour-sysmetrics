@@ -6,6 +6,7 @@ qrc_*.cpp
 Makefile
 .qmake.stash
 harbour-sysmetrics
+ru.yurasov.sysmetrics
 src/generated/
 translations/*.qm
 installroot/

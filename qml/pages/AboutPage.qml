@@ -39,6 +39,14 @@ Page {
                 wrapMode: Text.Wrap
                 font.pixelSize: Theme.fontSizeExtraSmall
                 color: Theme.secondaryColor
+                text: qsTr("Ported to Aurora OS by %1").arg("Юрасов Леонид")
+            }
+            Label {
+                x: Theme.horizontalPageMargin
+                width: parent.width - 2 * Theme.horizontalPageMargin
+                wrapMode: Text.Wrap
+                font.pixelSize: Theme.fontSizeExtraSmall
+                color: Theme.secondaryColor
                 text: qsTr("Process and system monitor with known-issue diagnostics: "
                     + "processes, hardware, chipsets, HAL services, Android base, "
                     + "bug-report assistant. Reads /proc, /sys, D-Bus and rpm on the "

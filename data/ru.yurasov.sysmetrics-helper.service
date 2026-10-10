@@ -3,7 +3,7 @@ Description=SysMetrics privileged diagnostics helper
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/harbour-sysmetrics --root-helper
+ExecStart=/usr/bin/ru.yurasov.sysmetrics --root-helper
 Restart=on-failure
 # Kein [Install]: nie boot-enabled. Der Schalter in der App startet/stoppt die
 # Unit (polkit-Regel); ohne verbundenen Client beendet sich der Helfer selbst.

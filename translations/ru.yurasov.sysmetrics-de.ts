@@ -15,22 +15,25 @@
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="42"/>
+        <source>Ported to Aurora OS by %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="50"/>
         <source>Process and system monitor with known-issue diagnostics: processes, hardware, chipsets, HAL services, Android base, bug-report assistant. Reads /proc, /sys, D-Bus and rpm on the device — read-only, collects nothing, transmits nothing.</source>
-        <translation>Prozess- und Systemmonitor mit Diagnose bekannter Fehler: Prozesse, Hardware, Chipsätze, HAL-Dienste, Android-Basis, Bugreport-Assistent. Liest /proc, /sys, D-Bus und rpm auf dem Gerät — read-only, sammelt nichts, sendet nichts.</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="53"/>
-        <source>The self-built Ultimate variant adds an online CVE search (EUVD/KEV) — the only feature that talks to the network. Build it yourself: --with ultimate.</source>
-        <translation>Die selbst zu bauende Ultimate-Variante ergänzt eine Online-CVE-Suche (EUVD/KEV) — das einzige Feature mit Netzwerkzugriff. Selbst bauen: --with ultimate.</translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/AboutPage.qml" line="64"/>
+        <location filename="../qml/pages/AboutPage.qml" line="72"/>
         <source>License: GPL-3.0-or-later
 Source:
 github.com/JimKnopfIoT/harbour-sysmetrics</source>
-        <translation>Lizenz: GPL-3.0-or-later
-Quellcode:
-github.com/JimKnopfIoT/harbour-sysmetrics</translation>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="61"/>
+        <source>The self-built Ultimate variant adds an online CVE search (EUVD/KEV) — the only feature that talks to the network. Build it yourself: --with ultimate.</source>
+        <translation>Die selbst zu bauende Ultimate-Variante ergänzt eine Online-CVE-Suche (EUVD/KEV) — das einzige Feature mit Netzwerkzugriff. Selbst bauen: --with ultimate.</translation>
     </message>
 </context>
 <context>
@@ -11005,42 +11008,42 @@ Nicht berühren</translation>
         <translation>Systemstandard</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="123"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="124"/>
         <source>Restart the app to apply the language.</source>
         <translation>App neu starten, um die Sprache anzuwenden.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="126"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="127"/>
         <source>Root mode</source>
         <translation>Root-Modus</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="128"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="129"/>
         <source>Use the root helper</source>
         <translation>Root-Helfer verwenden</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="129"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="130"/>
         <source>Without root, foreign-user processes (system daemons) expose only their basic figures; open files, devices, sockets, the access monitor and connection ownership stay empty. This starts a root helper service the app reads them through — it also unlocks the kernel charger log and journal excerpts for bug reports. It stops itself when the app is gone and is never started at boot.</source>
         <translation>Ohne Root zeigen Prozesse fremder Nutzer (Systemdienste) nur ihre Grunddaten; offene Dateien, Geräte, Sockets, der Zugriffsmonitor und die Verbindungszuordnung bleiben leer. Dies startet einen Root-Hilfsdienst, über den die App sie liest — er schaltet außerdem das Kernel-Ladeprotokoll und Journalauszüge für Fehlerberichte frei. Er beendet sich, sobald die App weg ist, und wird nie beim Systemstart geladen.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="161"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="162"/>
         <source>Helper connected — full access</source>
         <translation>Helfer verbunden — voller Zugriff</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="162"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="163"/>
         <source>Helper not running</source>
         <translation>Helfer läuft nicht</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="168"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="169"/>
         <source>About</source>
         <translation>Über</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="175"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="176"/>
         <source>About SysMetrics</source>
         <translation>Über SysMetrics</translation>
     </message>

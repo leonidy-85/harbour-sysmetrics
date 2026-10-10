@@ -1,8 +1,8 @@
-# SysMetrics — system diagnostics for Sailfish OS.
+# SysMetrics — system diagnostics for Aurora OS.
 
-TARGET = harbour-sysmetrics
+TARGET = ru.yurasov.sysmetrics
 
-CONFIG += sailfishapp sailfishapp_i18n c++17
+CONFIG += auroraapp auroraapp_i18n c++17
 
 QT += dbus network
 
@@ -58,7 +58,7 @@ HEADERS += \
     src/roothelper.h
 
 SOURCES += \
-    src/harbour-sysmetrics.cpp \
+    src/ru.yurasov.sysmetrics.cpp \
     src/source.cpp \
     src/sampler.cpp \
     src/sysmon.cpp \
@@ -81,28 +81,31 @@ SOURCES += \
     src/rootclient.cpp \
     src/roothelper.cpp
 
-SAILFISHAPP_ICONS = 86x86 108x108 128x128 172x172
+AURORAAPP_ICONS = 86x86 108x108 128x128 172x172
 
 # Optional privileged helper as a system service (installed, not enabled).
-helperservice.files = data/harbour-sysmetrics-helper.service
+helperservice.files = data/ru.yurasov.sysmetrics-helper.service
 helperservice.path = /usr/lib/systemd/system
 INSTALLS += helperservice
 
 # polkit rule: defaultuser may start/stop only the helper unit.
-polkitrule.files = data/50-harbour-sysmetrics.rules
+polkitrule.files = data/50-ru.yurasov.sysmetrics.rules
 polkitrule.path = /usr/share/polkit-1/rules.d
 INSTALLS += polkitrule
 
-TRANSLATIONS += translations/harbour-sysmetrics-de.ts
+TRANSLATIONS += \
+    translations/ru.yurasov.sysmetrics.ts \
+    translations/ru.yurasov.sysmetrics-ru.ts \
+    translations/ru.yurasov.sysmetrics-de.ts
 lupdate_only {
     SOURCES += qml/*.qml qml/cover/*.qml qml/pages/*.qml qml/pages/*.js qml/components/*.qml
 }
 
 DISTFILES += \
     README.md \
-    harbour-sysmetrics.desktop \
-    rpm/harbour-sysmetrics.spec \
-    qml/harbour-sysmetrics.qml \
+    ru.yurasov.sysmetrics.desktop \
+    rpm/ru.yurasov.sysmetrics.spec \
+    qml/ru.yurasov.sysmetrics.qml \
     qml/cover/CoverPage.qml \
     qml/components/qmldir \
     qml/components/Diag.qml \

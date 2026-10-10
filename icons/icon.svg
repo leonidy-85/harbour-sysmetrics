@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  harbour-htdiag app icon.
+  ru.yurasov.sysmetrics app icon.
 
   SILHOUETTE
-  Harbour app-icon shape with TWO opposite sharp corners: sharp at top-left
-  and bottom-right, rounded (R=86) at top-right and bottom-left.
-  Path: M0,0 L86,0 A86,86 172,86 L172,172 L86,172 A86,86 0,86 Z
+  Square tile, edge to edge (0,0 to 172,172).
 
   MOTIF
   Live system-monitor readout: per-core load bars in the back, a bright pulse
@@ -30,11 +28,11 @@
       <stop offset="1" stop-color="#20323e"/>
     </linearGradient>
     <clipPath id="tileClip">
-      <path d="M0,0 L86,0 A86,86 0 0 1 172,86 L172,172 L86,172 A86,86 0 0 1 0,86 Z"/>
+      <rect x="0" y="0" width="172" height="172"/>
     </clipPath>
   </defs>
 
-  <path fill="url(#tile)" d="M0,0 L86,0 A86,86 0 0 1 172,86 L172,172 L86,172 A86,86 0 0 1 0,86 Z"/>
+  <rect x="0" y="0" width="172" height="172" fill="url(#tile)"/>
 
   <g clip-path="url(#tileClip)">
     <!-- per-core load bars: eight columns, varied heights -->

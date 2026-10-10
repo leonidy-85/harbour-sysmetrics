@@ -1,4 +1,4 @@
-// SysMetrics — system diagnostics for Sailfish OS. Sampling runs in a worker
+// SysMetrics — system diagnostics for Aurora OS. Sampling runs in a worker
 // thread; the GUI thread receives value-copied snapshots.
 #include <QLocale>
 #include <QTranslator>
@@ -9,7 +9,9 @@
 #include <QScopedPointer>
 #include <QThread>
 
-#include <sailfishapp.h>
+#include <auroraapp.h>
+
+namespace LibApp = Aurora::Application;
 
 #include "applang.h"
 #include "bindermon.h"
@@ -112,7 +114,9 @@ int main(int argc, char *argv[])
     // its own user.
     ::umask(0077);
 
-    QScopedPointer<QGuiApplication> app(SailfishApp::application(argc, argv));
+    QScopedPointer<QGuiApplication> app(LibApp::application(argc, argv));
+    app->setOrganizationName(QStringLiteral("ru.yurasov"));
+    app->setApplicationName(QStringLiteral("sysmetrics"));
     startMessageLog();
 
     // A file from an earlier version keeps the mode it was created with, so
@@ -129,8 +133,8 @@ int main(int argc, char *argv[])
     qRegisterMetaType<SysSnap>();
     qRegisterMetaType<QVector<ProcSample>>();
 
-    qmlRegisterType<DetailMon>("harbour.sysmetrics", 1, 0, "ProcessDetail");
-    qmlRegisterType<GraphItem>("harbour.sysmetrics", 1, 0, "HistoryGraph");
+    qmlRegisterType<DetailMon>("ru.yurasov.sysmetrics", 1, 0, "ProcessDetail");
+    qmlRegisterType<GraphItem>("ru.yurasov.sysmetrics", 1, 0, "HistoryGraph");
 
     Sampler *sampler = new Sampler();
     QThread workerThread;
@@ -186,26 +190,33 @@ int main(int argc, char *argv[])
 
     workerThread.start();
 
-    QScopedPointer<QQuickView> view(SailfishApp::createView());
+    QScopedPointer<QQuickView> view(LibApp::createView());
 
-    // UI language override. Installed last, our translator is consulted first
-    // and overrides the locale translator sailfishapp installed in createView().
-    // "en" uses an identity translator (source = English); "de" loads the German
-    // .qm; "system" leaves sailfishapp's default. Qt 5.6 cannot retranslate a
-    // running engine, so a change applies on the next launch.
+    // UI language override. "en" uses an identity translator (source =
+    // English); "ru" and "de" load the matching .qm; "system" follows the
+    // locale. Qt 5.6 cannot retranslate a running engine, so a change applies
+    // on the next launch.
     {
         QString eff = AppLang::saved();
-        if (eff == QLatin1String("system"))
-            eff = QLocale::system().name().startsWith(QLatin1String("de"))
-                      ? QStringLiteral("de") : QStringLiteral("en");
+        if (eff == QLatin1String("system")) {
+            const QString loc = QLocale::system().name();
+            if (loc.startsWith(QLatin1String("de")))
+                eff = QStringLiteral("de");
+            else if (loc.startsWith(QLatin1String("ru")))
+                eff = QStringLiteral("ru");
+            else
+                eff = QStringLiteral("en");
+        }
         if (eff == QLatin1String("en")) {
             app->installTranslator(new IdentityTranslator(app.data()));
-        } else if (eff == QLatin1String("de")) {
+        } else if (eff == QLatin1String("ru") || eff == QLatin1String("de")) {
             QTranslator *tr = new QTranslator(app.data());
-            if (tr->load(QStringLiteral("harbour-sysmetrics-de"),
-                         SailfishApp::pathTo(QStringLiteral("translations")).toLocalFile()))
+            const QString name = QStringLiteral("ru.yurasov.sysmetrics-") + eff;
+            if (tr->load(name, LibApp::pathTo(QStringLiteral("translations")).toLocalFile()))
                 app->installTranslator(tr);
         }
+        // Installed last, ours wins over whatever Aurora's createView() picked
+        // from the system locale.
     }
 
     view->rootContext()->setContextProperty(QStringLiteral("sysmon"), &sysmon);
@@ -231,8 +242,8 @@ int main(int argc, char *argv[])
                                             QStringLiteral(SYSMETRICS_VERSION_STRING));
     view->rootContext()->setContextProperty(QStringLiteral("appBuildDate"),
                                             QStringLiteral(SYSMETRICS_BUILD_DATE));
-    view->setSource(SailfishApp::pathTo(QStringLiteral("qml/harbour-sysmetrics.qml")));
-    view->showFullScreen();
+    view->setSource(LibApp::pathTo(QStringLiteral("qml/ru.yurasov.sysmetrics.qml")));
+    view->show();
 
     const int rc = app->exec();
     workerThread.quit();

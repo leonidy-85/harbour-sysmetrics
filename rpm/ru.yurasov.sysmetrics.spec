@@ -2,25 +2,25 @@
 %define _buildhost reproducible-builder
 
 # Self-built Ultimate variant (adds the online CVE search):
-#   mb2 build -- --with ultimate
+#   sfdk build -- --with ultimate
 # Store/default builds stay without it.
 %bcond_with ultimate
-Name:       harbour-sysmetrics
-Summary:    System diagnostics for Sailfish OS
+Name:       ru.yurasov.sysmetrics
+Summary:    System diagnostics for Aurora OS
 Version:    0.3.11
 Release:    1
 License:    GPL-3.0-or-later
 URL:        https://github.com/JimKnopfIoT/harbour-sysmetrics
 Source0:    %{name}-%{version}.tar.bz2
-Vendor:     harbour-sysmetrics contributors
-Packager:   harbour-sysmetrics contributors
+Vendor:     ru.yurasov.sysmetrics contributors
+Packager:   ru.yurasov.sysmetrics contributors
 
 Requires:   sailfishsilica-qt5
 Requires:   nemo-qml-plugin-configuration-qt5
 Requires:   qt5-qtdeclarative-import-sensors
 Requires:   qt5-qtdeclarative-import-positioning
 Requires:   iw
-BuildRequires: pkgconfig(sailfishapp)
+BuildRequires: pkgconfig(auroraapp)
 BuildRequires: pkgconfig(Qt5Core)
 BuildRequires: pkgconfig(Qt5Qml)
 BuildRequires: pkgconfig(Qt5Quick)
@@ -45,17 +45,15 @@ On-device only, collects nothing, transmits nothing.
 strip %{buildroot}%{_bindir}/%{name}
 
 %post
-# Apply a changed [X-Sailjail] section without reboot.
-systemctl restart sailjaild >/dev/null 2>&1 || :
 systemctl daemon-reload >/dev/null 2>&1 || :
 # Upgrades: disable a manually enabled pre-0.1.1 helper.
 if [ "$1" -gt 1 ]; then
-    systemctl disable --now harbour-sysmetrics-helper.service >/dev/null 2>&1 || :
+    systemctl disable --now ru.yurasov.sysmetrics-helper.service >/dev/null 2>&1 || :
 fi
 
 %preun
 if [ "$1" = 0 ]; then
-    systemctl disable --now harbour-sysmetrics-helper.service >/dev/null 2>&1 || :
+    systemctl disable --now ru.yurasov.sysmetrics-helper.service >/dev/null 2>&1 || :
 fi
 
 %postun
@@ -67,8 +65,8 @@ systemctl daemon-reload >/dev/null 2>&1 || :
 %{_datadir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/*/apps/%{name}.png
-/usr/lib/systemd/system/harbour-sysmetrics-helper.service
-%{_datadir}/polkit-1/rules.d/50-harbour-sysmetrics.rules
+/usr/lib/systemd/system/ru.yurasov.sysmetrics-helper.service
+%{_datadir}/polkit-1/rules.d/50-ru.yurasov.sysmetrics.rules
 
 %changelog
 * Fri Sep 04 2026 harbour-sysmetrics contributors 0.3.4-1

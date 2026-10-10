@@ -20,7 +20,7 @@ ApplicationWindow {
     // silently at every start.
     ConfigurationValue {
         id: cfgRootHelper
-        key: "/apps/harbour-sysmetrics/rootHelperEnabled"
+        key: "/apps/ru.yurasov.sysmetrics/rootHelperEnabled"
         defaultValue: false
     }
     Component.onCompleted: {

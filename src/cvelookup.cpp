@@ -24,7 +24,7 @@ void CveLookup::fetchKev()
 {
     QNetworkRequest req(QUrl("https://www.cisa.gov/sites/default/files/"
                              "feeds/known_exploited_vulnerabilities.json"));
-    req.setHeader(QNetworkRequest::UserAgentHeader, "harbour-sysmetrics");
+    req.setHeader(QNetworkRequest::UserAgentHeader, "ru.yurasov.sysmetrics");
     m_nam->get(req);
 }
 
@@ -52,7 +52,7 @@ void CveLookup::search(const QString &terms)
     url.setQuery(q);
 
     QNetworkRequest req(url);
-    req.setHeader(QNetworkRequest::UserAgentHeader, "harbour-sysmetrics");
+    req.setHeader(QNetworkRequest::UserAgentHeader, "ru.yurasov.sysmetrics");
     req.setRawHeader("Accept", "application/json");
     m_busy = true;
     m_status = tr("Searching EUVD for \"%1\"…").arg(t);

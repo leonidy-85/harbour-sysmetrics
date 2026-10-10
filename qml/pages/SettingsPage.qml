@@ -10,7 +10,7 @@ Page {
     // Persisted; re-applied on launch by the main window.
     ConfigurationValue {
         id: cfgRootHelper
-        key: "/apps/harbour-sysmetrics/rootHelperEnabled"
+        key: "/apps/ru.yurasov.sysmetrics/rootHelperEnabled"
         defaultValue: false
     }
 
@@ -98,14 +98,15 @@ Page {
                 id: langCombo
                 width: page.width
                 label: qsTr("Language")
-                currentIndex: applang.language === "de" ? 1 : applang.language === "en" ? 2 : 0
+                currentIndex: applang.language === "ru" ? 1 : applang.language === "de" ? 2 : applang.language === "en" ? 3 : 0
                 menu: ContextMenu {
                     MenuItem { text: qsTr("System default") }
+                    MenuItem { text: "Русский" }
                     MenuItem { text: "Deutsch" }
                     MenuItem { text: "English" }
                 }
                 onCurrentIndexChanged: {
-                    var v = currentIndex === 1 ? "de" : currentIndex === 2 ? "en" : "system"
+                    var v = currentIndex === 1 ? "ru" : currentIndex === 2 ? "de" : currentIndex === 3 ? "en" : "system"
                     if (v !== applang.language) {
                         applang.language = v
                         langHint.visible = true

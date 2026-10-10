@@ -22,7 +22,7 @@ public:
             return;
         m_lang = v;
         QSettings s(QSettings::IniFormat, QSettings::UserScope,
-                    QStringLiteral("harbour-sysmetrics"), QStringLiteral("harbour-sysmetrics"));
+                    QStringLiteral("ru.yurasov"), QStringLiteral("sysmetrics"));
         s.setValue(QStringLiteral("language"), v);
         s.sync();
         emit languageChanged();
@@ -31,7 +31,7 @@ public:
     static QString saved()
     {
         QSettings s(QSettings::IniFormat, QSettings::UserScope,
-                    QStringLiteral("harbour-sysmetrics"), QStringLiteral("harbour-sysmetrics"));
+                    QStringLiteral("ru.yurasov"), QStringLiteral("sysmetrics"));
         return s.value(QStringLiteral("language"), QStringLiteral("system")).toString();
     }
 

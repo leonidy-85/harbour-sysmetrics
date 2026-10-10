@@ -33,7 +33,7 @@ void RootClient::setHelper(bool on)
         QStringLiteral("/org/freedesktop/systemd1"),
         QStringLiteral("org.freedesktop.systemd1.Manager"),
         on ? QStringLiteral("StartUnit") : QStringLiteral("StopUnit"));
-    call << QStringLiteral("harbour-sysmetrics-helper.service")
+    call << QStringLiteral("ru.yurasov.sysmetrics-helper.service")
          << QStringLiteral("replace");
     const QDBusMessage reply = QDBusConnection::systemBus().call(call);
     if (reply.type() == QDBusMessage::ErrorMessage)

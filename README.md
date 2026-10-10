@@ -1,8 +1,13 @@
 # SysMetrics
 
-System diagnostics for Sailfish OS. htop-class process monitor plus system,
+System diagnostics for Aurora OS. htop-class process monitor plus system,
 network, device and battery inspection — and read-only diagnostics that
 recognise documented device issues and explain their fixes.
+
+> **Port to Aurora OS.** This is a port of the original project
+> [SysMetrics / harbour-sysmetrics](https://github.com/JimKnopfIoT/harbour-sysmetrics)
+> — the original project this port and its translation are made from.
+> Ported to Aurora OS by Юрасов Леонид.
 
 ## Features
 
@@ -122,11 +127,22 @@ app never talks to the network.
 
 ## Build
 
-    mb2 -t SailfishOS-5.0.0.62-aarch64 build
+Built with the Aurora SDK (`sfdk`).
+
+    32-bit (armv7hl):   sfdk build
+    64-bit (aarch64):   sfdk -c target=AuroraOS-5.2.0.180-aarch64.default build
+
+Package name: `ru.yurasov.sysmetrics`. The resulting RPMs land in `RPMS/`.
+
+Inside a Git working tree `sfdk` derives the package version from the
+repository and appends a `+<branch>.<timestamp>.<hash>` suffix, so two builds
+at different times get different versions. To get a clean, identical version
+for both architectures (`0.3.11-1`, taken from the spec), build from a copy of
+the project *outside* the Git working tree but inside the SDK workspace.
 
 ### Ultimate variant (self-built)
 
-    mb2 -t SailfishOS-5.0.0.62-aarch64 build -- --with ultimate
+    sfdk build -- --with ultimate
 
 Adds an online CVE search to the diagnosis blocks — the only feature that
 talks to the network, which is why it stays out of default builds. It
@@ -137,6 +153,14 @@ with an empty query, and each result carries a local fix verdict: ✔ not
 affected or fixed (rpm changelog names the CVE, or the installed version
 lies above the affected range stated in the CVE), ✘ probably affected
 (version inside the range, or the package predates the CVE), ▢ unknown.
+
+## Localization
+
+The interface is available in English (source), Russian and German, switchable
+in **Settings → Language** (System default / Русский / Deutsch / English).
+Translations live in `translations/` (`ru.yurasov.sysmetrics-ru.ts`,
+`ru.yurasov.sysmetrics-de.ts`). The Russian translation is machine-assisted —
+corrections go straight into the `.ts` file and are picked up on the next build.
 
 ## License
 

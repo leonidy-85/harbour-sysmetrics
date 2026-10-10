@@ -1,0 +1,17 @@
+[Desktop Entry]
+Type=Application
+X-Nemo-Application-Type=silica-qt5
+Icon=ru.yurasov.sysmetrics
+Name=SysMetrics
+Name[ru]=SysMetrics
+Comment=System diagnostics & process monitor
+Comment[ru]=Диагностика системы и монитор процессов
+Exec=ru.yurasov.sysmetrics
+
+[X-Application]
+OrganizationName=ru.yurasov
+ApplicationName=sysmetrics
+Permissions=DeviceInfo;Sensors;Location;Bluetooth;Internet
+
+[X-Aurora-Application]
+Orientation=All
